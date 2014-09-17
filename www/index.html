@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html ng-app="aytoDemo">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <title>Are You The One demo</title>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>-->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+</head>
+<body ng-controller="aytoController">
+
+<script src="js/controllers/aytoController.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    app.initialize();
+</script>
+
+<!--<div class="app">
+    <h1>Apache Cordova</h1>
+    <div id="deviceready" class="blink">
+        <p class="event listening">Connecting to Device</p>
+        <p class="event received">Device is Ready</p>
+    </div>
+</div>-->
+<div class="video-container">
+    <video id="1" class="video" width="900" controls preload="metadata" ng-show="selectedVid.id == 1">
+        <source src="vid/date.mp4" type="video/mp4">
+        Sorry, no video
+    </video>
+    <video id="2" class="video" width="900" controls preload="metadata" ng-show="selectedVid.id == 2">
+        <source src="vid/matchup.mp4" type="video/mp4">
+        Sorry, no video
+    </video>
+    <video id="3" class="video" width="900" controls preload="metadata" ng-show="selectedVid.id == 3">
+        <source src="vid/truthbooth.mp4" type="video/mp4">
+        Sorry, no video
+    </video>
+    <a class="link" href="http://lnk.to/ayto">http://lnk.to/ayto</a>
+
+    <div class="input-container">
+        <div class="input">
+            <select ng-model="selectedVid" ng-change="videoSelected()" ng-options="video.display for video in videos" ng-></select>
+            <input type="text" ng-model="data.name">
+        </div>
+        <!--<button onclick="document.getElementById('video').play()">Play</button>
+    <button onclick="document.getElementById('video').pause()">Pause</button>-->
+        <div class="button-container">
+            <button class="trigger-button" ng-click="triggerEvent()">Click</button>
+            <button class="trigger-button" ng-click="resetEvents()">Reset</button>
+        </div>
+        <div>
+            <div class="label-container" ng-show="selectedVid.id === 1">
+                <label class="label2-left">Første event: {{selectedVid.eventTimings[0]}}</label>
+                <label class="label2-right">Andet event: {{selectedVid.eventTimings[2]}}</label>
+            </div>
+            <div ng-show="selectedVid.id === 1">
+                <textarea class="text2-left" ng-model="data.video1.event1.text"></textarea>
+                <textarea class="text2-right" ng-model="data.video1.event2.text"></textarea>
+            </div>
+
+            <div class="label-container" ng-show="selectedVid.id === 2">
+                <label class="label3-left">Første event: {{selectedVid.eventTimings[0]}}</label>
+                <label class="label3-center">Andet event: 1.07</label>
+                <label class="label3-right">Trejde event: 2.06</label>
+            </div>
+            <div ng-show="selectedVid.id === 2">
+                <textarea class="text3-left" ng-model="data.video2.event1.text"></textarea>
+                <textarea class="text3-center" ng-model="data.video2.event2.text"></textarea>
+                <textarea class="text3-right" ng-model="data.video2.event3.text"></textarea>
+            </div>
+
+            <div class="label-container" ng-show="selectedVid.id === 3">
+                <label class="label2-left">Første event: {{selectedVid.eventTimings[0]}}</label>
+                <label class="label2-right" ng-show="selectedVid.id === 3">Andet event: 1.18</label>
+            </div>
+            <div ng-show="selectedVid.id === 3">
+                <textarea class="text2-left" ng-model="data.video3.event1.text"></textarea>
+                <textarea class="text2-right" ng-model="data.video3.event2.text"></textarea>
+            </div>
+
+        </div>
+    </div>
+    <!--<button ng-click="setCurrentTime()">Set current time</button>-->
+</div>
+</body>
+</html>
